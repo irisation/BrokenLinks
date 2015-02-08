@@ -18,7 +18,6 @@ public class BrokenLinksTest extends TestBase {
         List<WebElement> links = getDriver().findElements(By.tagName("a"));
         int i = 0;
         for (WebElement link : links) {
-            String text = link.getAttribute("href");
             Assert.assertTrue(Request.Get(link.getAttribute("href")).execute().returnResponse().getStatusLine()
                     .getStatusCode() != 404);
             System.out.println(++i);
